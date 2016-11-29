@@ -13,19 +13,12 @@ $ModLoad imuxsock # provides support for local system logging (e.g. via logger c
 $SystemLogRateLimitInterval <%= @ratelimitinterval %>
 <% end -%>
 
-$ModLoad imklog   # provides kernel logging support (previously done by rklogd)
-#$ModLoad immark  # provides --MARK-- message capability
-
-# Provides UDP syslog reception
-#$ModLoad imudp
-#$UDPServerRun 514
-
-# Provides TCP syslog reception
-#$ModLoad imtcp
-#$InputTCPServerRun 514
+$ModLoad <%= scope.lookupvar('rsyslog::system_im') %>
 
 
 #### GLOBAL DIRECTIVES ####
+
+$WorkDirectory <%= @workdirectory %>
 
 # Use default timestamp format
 $ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
@@ -79,7 +72,6 @@ local7.*                                                /var/log/boot.log
 #
 # An on-disk queue is created for this action. If the remote host is
 # down, messages are spooled to disk and sent when it is up again.
-#$WorkDirectory /var/lib/rsyslog # where to place spool files
 #$ActionQueueFileName fwdRule1 # unique name prefix for spool files
 #$ActionQueueMaxDiskSpace 1g   # 1gb space limit (use as much as possible)
 #$ActionQueueSaveOnShutdown on # save messages to disk on shutdown

@@ -1,5 +1,5 @@
 define rsyslog::imudp(
-                        $udpport='514'
+                        $udpport = '514'
                       ) {
   if ! defined(Class['rsyslog'])
 	{

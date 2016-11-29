@@ -1,9 +1,9 @@
 define rsyslog::imfile(
                         $inputfiletag,
                         $statefile,
-                        $fileseverity='error',
-                        $filefacility='local7',
-                        $inputfilename=$name,
+                        $fileseverity  = 'error',
+                        $filefacility  = 'local7',
+                        $inputfilename = $name,
                       ) {
   if ! defined(Class['rsyslog'])
 	{

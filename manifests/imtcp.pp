@@ -1,5 +1,5 @@
 define rsyslog::imtcp(
-                        $tcpport='514'
+                        $tcpport = '514'
                       ) {
   if ! defined(Class['rsyslog'])
 	{

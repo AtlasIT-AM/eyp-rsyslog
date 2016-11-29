@@ -1,9 +1,10 @@
 class rsyslog	(
-			$ratelimitinterval='0',
-			$servicestate='running',
-			$forwardformat=false,
-			$modules=undef,
-			$vars=undef,
+			$ratelimitinterval = '0',
+			$servicestate      = 'running',
+			$forwardformat     = false,
+			$modules           = undef,
+			$vars              = undef,
+			$workdirectory     = '/var/lib/rsyslog',
 		) inherits params {
 
 	if ! defined(Class['syslogng'])
@@ -13,12 +14,12 @@ class rsyslog	(
 			validate_array($modules)
 
 			file { '/etc/rsyslog.d/modules.conf':
-				ensure => 'present',
-				owner => 'root',
-				group => 'root',
-				mode => '0644',
+				ensure  => 'present',
+				owner   => 'root',
+				group   => 'root',
+				mode    => '0644',
 				content => template("${module_name}/modules/loadmodules.erb"),
-				notify => Service['rsyslog'],
+				notify  => Service['rsyslog'],
 				require => File['/etc/rsyslog.d'],
 			}
 		}
@@ -28,12 +29,12 @@ class rsyslog	(
 			validate_hash($vars)
 
 			file { '/etc/rsyslog.d/vars.conf':
-				ensure => 'present',
-				owner => 'root',
-				group => 'root',
-				mode => '0644',
+				ensure  => 'present',
+				owner   => 'root',
+				group   => 'root',
+				mode    => '0644',
 				content => template("${module_name}/modules/vars.erb"),
-				notify => Service['rsyslog'],
+				notify  => Service['rsyslog'],
 				require => File['/etc/rsyslog.d'],
 			}
 		}

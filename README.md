@@ -69,8 +69,13 @@ rsyslogimfiles:
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+modules:
+* **imtcp**: TCP Syslog Input Module
+* **imudp**: UDP Syslog Input Module
+* **imfile**: Text File Input Module
+* **imjournal**: provides access to the systemd journal
+* **imklog**: provides kernel logging support
+* TODO: #$ModLoad immark  # provides --MARK-- message capability
 
 ## Reference
 
