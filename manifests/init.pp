@@ -1,11 +1,16 @@
 class rsyslog	(
-			$ratelimitinterval = '0',
-			$servicestate      = 'running',
-			$forwardformat     = false,
-			$modules           = undef,
-			$vars              = undef,
-			$workdirectory     = '/var/lib/rsyslog',
-		) inherits params {
+								$ratelimitinterval  = '0',
+								$servicestate       = 'running',
+								$forwardformat      = false,
+								$modules            = undef,
+								$vars               = undef,
+								$workdirectory      = '/var/lib/rsyslog',
+								$rsyslogd_purge     = true,
+								$rsyslogd_recurse   = true,
+								$emerg              = $rsyslog::params::emerg_default,
+								$omitlocallogging   = $rsyslog::params::omitlocallogging_default,
+								$imjournalstatefile = $rsyslog::params::imjournalstatefile_default,
+							) inherits params {
 
 	if ! defined(Class['syslogng'])
 	{
@@ -53,6 +58,8 @@ class rsyslog	(
 			owner   => 'root',
 			group   => 'root',
 			mode    => '0655',
+			purge   => $rsyslogd_purge,
+			recurse => $rsyslogd_recurse,
 			require => Package['rsyslog'],
 		}
 
@@ -64,6 +71,20 @@ class rsyslog	(
 			content => template($rsyslog::params::rsyslogconf_template),
 			notify  => Service['rsyslog'],
 			require => [Package['rsyslog'],File['/etc/rsyslog.d']],
+		}
+
+
+		if($rsyslog::params::systemlogsocketname!=undef)
+		{
+			file { '/etc/rsyslog.d/listen.conf':
+				ensure  => 'present',
+				owner   => 'root',
+				group   => 'root',
+				mode    => '0644',
+				content => template("${module_name}/modules/listen.erb"),
+				notify  => Service['rsyslog'],
+				require => File['/etc/rsyslog.d'],
+			}
 		}
 
 		service { 'rsyslog':
