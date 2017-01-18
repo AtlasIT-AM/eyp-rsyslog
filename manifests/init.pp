@@ -57,7 +57,7 @@ class rsyslog	(
 			ensure  => 'directory',
 			owner   => 'root',
 			group   => 'root',
-			mode    => '0655',
+			mode    => '0755',
 			purge   => $rsyslogd_purge,
 			recurse => $rsyslogd_recurse,
 			require => Package['rsyslog'],

@@ -1,6 +1,6 @@
 {
   "name": "eyp-rsyslog",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "author": "eyp",
   "summary": "basic rsyslog management",
   "license": "Apache-2.0",
