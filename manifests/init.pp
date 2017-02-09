@@ -44,11 +44,6 @@ class rsyslog	(
 			}
 		}
 
-		if defined(Class['ntteam'])
-		{
-			ntteam::tag{ 'rsyslog': }
-		}
-
 		package { 'rsyslog':
 			ensure => 'installed',
 		}
