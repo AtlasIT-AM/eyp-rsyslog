@@ -28,6 +28,10 @@ $ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
 # not useful and an extreme performance hit
 #$ActionFileEnableSync on
 
+<% if defined?(@filecreatemode) -%>
+$FileCreateMode <%= @filecreatemode %>
+<% end -%>
+
 <% if @forwardformat -%>
 $ActionForwardDefaultTemplate RSYSLOG_ForwardFormat
 <% end -%>

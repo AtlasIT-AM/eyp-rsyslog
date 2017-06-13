@@ -16,7 +16,7 @@ define rsyslog::facility(
 			ensure  => 'present',
 			owner   => 'root',
 			group   => 'root',
-			mode    => '0644',
+			mode    => $rsyslog::rsyslogconf_mode,
 			content => template("${module_name}/facility.erb"),
 			notify  => Service['rsyslog'],
 		}

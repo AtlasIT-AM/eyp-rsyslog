@@ -21,7 +21,7 @@ define rsyslog::imfile(
       ensure  => 'present',
       owner   => 'root',
       group   => 'root',
-      mode    => '0644',
+      mode    => $rsyslog::rsyslogconf_mode,
       require => Package['rsyslog'],
       notify  => Service['rsyslog'],
     }
