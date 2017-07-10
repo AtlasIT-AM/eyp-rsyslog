@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.26
+
+* added log files file mode management
+
 ## 0.1.25
 
 * added variables to be able to set config file's and rsyslogd directory mode

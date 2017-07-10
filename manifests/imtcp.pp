@@ -2,9 +2,9 @@ define rsyslog::imtcp(
                         $tcpport = '514'
                       ) {
   if ! defined(Class['rsyslog'])
-	{
-		fail('You must include the rsyslog base class before using any rsyslog defined resources')
-	}
+  {
+    fail('You must include the rsyslog base class before using any rsyslog defined resources')
+  }
 
   if ! ('imtcp' in $rsyslog::modules)
   {

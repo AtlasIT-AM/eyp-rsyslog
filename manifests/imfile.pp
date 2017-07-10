@@ -6,9 +6,9 @@ define rsyslog::imfile(
                         $inputfilename = $name,
                       ) {
   if ! defined(Class['rsyslog'])
-	{
-		fail('You must include the rsyslog base class before using any rsyslog defined resources')
-	}
+  {
+    fail('You must include the rsyslog base class before using any rsyslog defined resources')
+  }
 
   if ! ('imfile' in $rsyslog::modules)
   {
@@ -26,7 +26,7 @@ define rsyslog::imfile(
       notify  => Service['rsyslog'],
     }
 
-    concat::fragment { "header imfiles":
+    concat::fragment { 'header imfiles':
       target  => '/etc/rsyslog.d/imfiles.conf',
       order   => '00',
       content => "#puppet managed file\n",
