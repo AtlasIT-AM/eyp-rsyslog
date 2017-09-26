@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.27
+
+* added configurable messages facilities
+
 ## 0.1.26
 
 * added log files file mode management

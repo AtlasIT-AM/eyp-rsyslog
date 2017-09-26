@@ -1,3 +1,4 @@
+# puppet2sitepp @rsyslogimudp
 define rsyslog::imudp(
                         $udpport = '514'
                       ) {

@@ -56,9 +56,9 @@ $IMJournalStateFile <%= @imjournalstatefile %>
 # Logging much else clutters up the screen.
 #kern.*                                                 /dev/console
 
-# Log anything (except mail) of level info or higher.
-# Don't log private authentication messages!
-*.info;mail.none;authpriv.none;cron.none                /var/log/messages
+<% if @messages_facilities.any? -%>
+<%= @messages_facilities.join(';') %>                /var/log/messages
+<% end -%>
 
 # The authpriv file has restricted access.
 authpriv.*                                              /var/log/secure

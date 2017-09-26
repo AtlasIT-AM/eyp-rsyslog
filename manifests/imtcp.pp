@@ -1,3 +1,4 @@
+# puppet2sitepp @rsyslogimtcp
 define rsyslog::imtcp(
                         $tcpport = '514'
                       ) {

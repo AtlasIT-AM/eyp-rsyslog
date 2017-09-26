@@ -1,3 +1,4 @@
+# puppet2sitepp @rsyslogimfiles
 define rsyslog::imfile(
                         $inputfiletag,
                         $statefile,

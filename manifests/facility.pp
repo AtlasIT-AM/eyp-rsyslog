@@ -1,3 +1,4 @@
+# puppet2sitepp @rsyslogfacilities
 define rsyslog::facility(
                           $facility,
                           $facilityname     = $name,
