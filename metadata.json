@@ -1,6 +1,6 @@
 {
   "name": "eyp-rsyslog",
-  "version": "0.1.27",
+  "version": "0.2.2",
   "author": "eyp",
   "summary": "rsyslog management",
   "license": "Apache-2.0",
@@ -8,7 +8,7 @@
   "project_page": "https://github.com/NTTCom-MS/eyp-rsyslog",
   "issues_url": "https://github.com/NTTCom-MS/eyp-rsyslog/issues",
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0 < 9.9.9"},
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.12.0 < 9.9.9"},
     {"name":"puppetlabs/concat","version_requirement":">= 1.2.3 < 9.9.9"},
     {"name":"eyp/eyplib","version_requirement":">= 0.1.0 < 0.2.0"}
   ],
@@ -25,7 +25,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 3.0.0"
+      "version_requirement": ">= 3.8.0"
     }
   ]
 }

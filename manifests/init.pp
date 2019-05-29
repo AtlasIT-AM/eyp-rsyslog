@@ -1,8 +1,9 @@
 # @param messages_facilities List of facilities for /var/log/messages default: *.info, mail.none, authpriv.none, cron.none
-class rsyslog  (
+class rsyslog(
                 $ratelimitinterval   = '0',
                 $filecreatemode      = undef,
-                $servicestate        = 'running',
+                $service_ensure      = 'running',
+                $service_enable      = true,
                 $forwardformat       = false,
                 $modules             = undef,
                 $vars                = undef,
@@ -97,10 +98,21 @@ class rsyslog  (
       }
     }
 
-    service { 'rsyslog':
-      ensure  => $servicestate,
-      enable  => true,
-      require => Package['rsyslog'],
+    if(defined(Class['::syslogng']))
+    {
+      service { 'rsyslog':
+        ensure  => 'stopped',
+        enable  => false,
+        require => Package['rsyslog'],
+      }
+    }
+    else
+    {
+      service { 'rsyslog':
+        ensure  => $service_ensure,
+        enable  => $service_enable,
+        require => Package['rsyslog'],
+      }
     }
   }
 }
