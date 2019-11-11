@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.3
+
+* added template to **rsyslog::facility**
+
 ## 0.2.2
 
 * syslogng compatibility (disable rsyslog when class syslogng is loaded)

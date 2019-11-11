@@ -3,17 +3,17 @@
 <% if @discard -%>
 <%= @facility %> ~
 <% elsif val -%>
-<%= @facility %> <% if @remotesyslogtype=="udp" %>@<% else %>@@<% end %><%= val %>
+<%= @facility %> <% if @remotesyslogtype=="udp" %>@<% else %>@@<% end %><%= val %><% if defined?(@template) %>;<%= @template %><% end %>
 <% else -%>
-<%= @facility %> <%= @filename %>
+<%= @facility %> <%= @filename %><% if defined?(@template) %>;<%= @template %><% end %>
 <% end -%>
 <% end %>
 <% else -%>
 <% if @discard -%>
 <%= @facility %> ~
 <% elsif @remotesyslog -%>
-<%= @facility %> <% if @remotesyslogtype=="udp" %>@<% else %>@@<% end %><%= @remotesyslog %>
+<%= @facility %> <% if @remotesyslogtype=="udp" %>@<% else %>@@<% end %><%= @remotesyslog %><% if defined?(@template) %>;<%= @template %><% end %>
 <% else -%>
-<%= @facility %> <%= @filename %>
+<%= @facility %> <%= @filename %><% if defined?(@template) %>;<%= @template %><% end %>
 <% end -%>
 <% end -%>

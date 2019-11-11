@@ -2,12 +2,13 @@
 define rsyslog::facility(
                           $facility,
                           $facilityname     = $name,
+                          $order            = '10',
                           $filename         = undef,
                           $discard          = false,
                           $basedir          = '/etc/rsyslog.d',
                           $remotesyslog     = undef,
                           $remotesyslogtype = 'udp',
-                          $order            = '10',
+                          $template         = undef,
                         ) {
   validate_re($remotesyslogtype, [ '^udp$', '^tcp$'], "not a valid protocol: ${remotesyslogtype}")
 
