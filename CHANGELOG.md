@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.4
+
+* modified filenames to load **imtcp** and **imudp** and it's options in the right order
+* Added RHEL8 support
+
 ## 0.2.3
 
 * added template to **rsyslog::facility**

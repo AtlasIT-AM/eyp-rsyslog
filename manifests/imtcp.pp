@@ -1,6 +1,7 @@
 # puppet2sitepp @rsyslogimtcp
 define rsyslog::imtcp(
-                        $tcpport = '514'
+                        $tcpport     = '514',
+                        $listen_name = $name,
                       ) {
   if ! defined(Class['rsyslog'])
   {
@@ -12,7 +13,9 @@ define rsyslog::imtcp(
     fail('imtcp not loaded')
   }
 
-  file { '/etc/rsyslog.d/imtcp.conf':
+  $listen_name_cleanup = regsubst($listen_name, '[^a-zA-Z]+', '_', 'G')
+
+  file { "/etc/rsyslog.d/01-imtcp-${listen_name_cleanup}.conf":
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',

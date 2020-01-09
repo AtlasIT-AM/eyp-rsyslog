@@ -26,7 +26,7 @@ class rsyslog(
     {
       validate_array($modules)
 
-      file { '/etc/rsyslog.d/modules.conf':
+      file { '/etc/rsyslog.d/00-modules.conf':
         ensure  => 'present',
         owner   => 'root',
         group   => 'root',

@@ -15,7 +15,7 @@ class rsyslog::params {
           $omitlocallogging_default=undef
           $emerg_default='*'
         }
-        /^7.*$/:
+        /^[78].*$/:
         {
           $rsyslogconf_template='rsyslog/rsyslogconf.erb'
           $system_im='imjournal'

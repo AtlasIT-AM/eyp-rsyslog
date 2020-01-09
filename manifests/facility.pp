@@ -14,7 +14,7 @@ define rsyslog::facility(
 
   if ! defined(Class['syslogng'])
   {
-    file { "${basedir}/${order}-${facilityname}.conf":
+    file { "${basedir}/99-${order}-${facilityname}.conf":
       ensure  => 'present',
       owner   => 'root',
       group   => 'root',
